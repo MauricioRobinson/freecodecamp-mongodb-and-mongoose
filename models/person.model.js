@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const personSchema = mongoose.Schema({
+const personSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -9,4 +9,4 @@ const personSchema = mongoose.Schema({
   favoriteFoods: [String],
 });
 
-module.exports = personSchema;
+module.exports = mongoose.model('Person', personSchema);
