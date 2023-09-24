@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "A boilerplate project",
   "main": "server.js",
-  "engines": {
-    "node": "18.x.x"
-  },
   "scripts": {
     "start": "node server.js"
   },

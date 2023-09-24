@@ -1,21 +1,24 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+const personSchema = require('./models/person.model');
 
 const connectDB = async () => {
   try {
+    mongoose.set('strictQuery', true);
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
     console.log('Connected to DB');
   } catch (error) {
+    console.log('Error: ', error);
     console.error('Error while trying to connect to the DB', error.message);
   }
 };
 
 connectDB();
 
-let Person;
+let Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
