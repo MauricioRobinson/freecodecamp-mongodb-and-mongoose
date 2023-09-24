@@ -1,6 +1,5 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const PersonModel = require('./models/person.model');
 
 const connectDB = async () => {
   try {
@@ -18,7 +17,15 @@ const connectDB = async () => {
 
 connectDB();
 
-let Person = new PersonModel();
+const Schema = mongoose.Schema;
+
+const personSchema = new Schema({
+  name: { type: String, required: true },
+  age: Number,
+  favoriteFoods: [String],
+});
+
+let Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
